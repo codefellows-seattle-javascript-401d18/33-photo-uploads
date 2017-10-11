@@ -1,29 +1,36 @@
 import React from 'react';
 import Navbar from '../navbar';
-import {Provider} from 'react-redux';
+import {connect} from 'react-redux';
+import * as utils from '../../lib/utils';
+import {tokenSet} from '../../action/auth-actions';
 import LandingContainer from '../landing-container';
-import Dashboard from '../dashboard';
+import DashboardContainer from '../dashboard-container';
 import {BrowserRouter, Route} from 'react-router-dom';
-import appStoreCreate from '../../lib/app-create-store';
-
-let store = appStoreCreate();
+import SettingsContainer from '../settings-container';
 
 class App extends React.Component {
   render() {
     return (
       <div className="application">
-        <Provider store={store}>
-          <BrowserRouter>
-            <div>
-              <Navbar />
-              {<Route path="/welcome/:auth" component={LandingContainer}/>}
-              {<Route path="/dashboard" component={Dashboard}/>}
-            </div>
-          </BrowserRouter>
-        </Provider>
+        <BrowserRouter>
+          <div>
+            <Navbar />
+            {<Route path="/settings" component={SettingsContainer}/>}
+            {<Route path="/welcome/:auth" component={LandingContainer}/>}
+            {<Route path="/dashboard" component={DashboardContainer}/>}
+          </div>
+        </BrowserRouter>
       </div>
     );
   }
 }
+
+let mapStateToProps = state => ({
+  profile: state.profile,
+});
+
+let mapDispatchToProps = dispatch => ({
+  tokenSet: token => dispatch(tokenSet(token)),
+});
 
 export default App;

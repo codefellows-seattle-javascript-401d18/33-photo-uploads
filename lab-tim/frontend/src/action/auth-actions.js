@@ -9,7 +9,7 @@ export const tokenDelete = () => ({type: 'TOKEN_DELETE', payload: null});
 
 export const signupRequest = user => dispatch => {
   return superagent.post(`${__API_URL__}/signup`)
-  // .withCredentials()
+    .withCredentials()
     .send(user)
     .then(res => {
       dispatch(tokenSet(res.text));
