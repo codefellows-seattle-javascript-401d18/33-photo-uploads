@@ -8,7 +8,7 @@ import {photosFetchRequest, photoCreateRequest} from '../../action/photo-actions
 class DashboardContainer extends React.Component {
   componentDidMount(){
     this.props.photoFetch()
-      .then(() => console.log('scott was here', this.props));
+      .then(() => console.log(this.props, '***Props after didMountFetch'));
   }
 
   
@@ -17,6 +17,7 @@ class DashboardContainer extends React.Component {
   }
 
   render() {
+    console.log(this.props.photos,'****photo');
     console.log(this.props.photos, '%%%%%%%%%%%%%%%%');
     return (
       <div>
@@ -28,11 +29,11 @@ class DashboardContainer extends React.Component {
               .catch(console.error);
           }}
         />
-        {/* {utils.renderIf(this.props.photos,
+        {utils.renderIf(this.props.photos,
           this.props.photos.map(photo =>
             <PhotoItem key={photo._id} photo={photo}
             />
-          ))} */}
+          ))}
       </div>
     );
   }

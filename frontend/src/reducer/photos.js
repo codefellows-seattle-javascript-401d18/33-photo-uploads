@@ -1,9 +1,9 @@
 
 
-export default (state=null, action) => {
+export default (state=[], action) => {
   let {type, payload} = action;
   switch(type) {
-  case 'PHOTOS_SET':
+  case 'PHOTO_SET':
     return payload;
   case 'PHOTO_CREATE':
     return [payload, ...state];
