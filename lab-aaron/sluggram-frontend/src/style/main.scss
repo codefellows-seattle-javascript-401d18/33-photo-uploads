@@ -1,0 +1,59 @@
+// new color pallete all colors are kind of dusty
+// #96858F -Dusty -dark reddish lavendar maybe
+// #6D7993 -Lavendar
+// #9099A2 -Overcast -grey
+// #D5D5D5 -Paper -whiteish
+
+//transferred to the _vars.scss library, not sure if it auto imports<fingers crossed>dont have enough in to test
+
+$white: #D5D5D5;
+$black: #9099A2;
+$primary: #96858F;
+$secondary: #6D7993;
+$font-primary: 'arial';
+$gutter-sm: 1.5vw;
+$gutter-lg: $gutter-sm * 2;
+$border-radius: 5px;  changing something so i can recommit
+
+body {
+  font-family: $font-primary;
+  background: $black;
+  text-align: center;
+
+  .application {
+    width: 100%;
+  }
+
+  pre {
+    background: $primary;
+    color: $secondary;
+    padding: $gutter-lg;
+    border-radius: $border-radius;
+
+    code {
+      max-width: 50%;
+      margin: $gutter-sm auto;
+      font-size: 2.5vw;
+    }
+  }
+}
+
+select {
+  -webkit-appearance: none;
+  text-align-last: center;
+}
+
+button, select, option {
+  width: 100%;
+  padding: $gutter-sm;
+  margin: ($gutter-sm / 2) 0;
+  font-size: 2vw;
+  // border-radius: $border-radius;
+  background: $white;
+  border: 3px solid $black;
+  transition: 350ms;
+
+  &:hover {
+    background: $primary;
+  }
+}
