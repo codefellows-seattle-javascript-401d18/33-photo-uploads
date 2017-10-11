@@ -89,6 +89,22 @@ input[type="password"] {
   }
 }
 
+input[type="email"] {
+  border-radius: $border-radius;
+  box-sizing: border-box;
+  padding: $gutter-sm;
+  width: 25%;
+  font-size: 2vw;
+  margin-bottom: $gutter-sm;
+  border: none;
+  transition: $transition-primary;
+
+  &:focus {
+    background: #444;
+    color: $white;
+  }
+}
+
 h1 {
   font-size: 3vw;
   text-decoration: underline;
