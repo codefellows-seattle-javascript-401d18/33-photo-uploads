@@ -3,6 +3,8 @@ import './_navbar.scss';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {tokenDelete} from '../../action/auth-actions';
+import { AccessAlarm, ThreeDRotation } from 'material-ui-icons';
+
 
 class Navbar extends React.Component {
   render() {
