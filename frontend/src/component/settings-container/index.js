@@ -41,19 +41,6 @@ class SettingsContainer extends React.Component {
               onComplete={this.props.profileCreate}/>
           </div>
         )}
-
-        {utils.renderIf(this.props.auth && this.props.profile, 
-          <ProfileItem />
-        )}
-        {utils.renderIf(this.state.editProfile,
-          <div>
-            <h3>Update your profile</h3>
-            <ProfileForm
-              buttonText="Update"
-              onComplete={this.props.profileUpdate}
-              profile={this.props.profile} />
-          </div>
-        )}
       </div>
     );
   }
