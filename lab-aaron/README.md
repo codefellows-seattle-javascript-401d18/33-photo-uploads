@@ -1,5 +1,5 @@
-# Lab 32
-
+# Lab 33
+CF-Gram
 
 
 
@@ -29,15 +29,13 @@ In another window you can begin to signup and login!!
 ### Using the App UNDER CONSTRUCTION
 This will sign you up for the app.
 
-Use the handy page located at localhost:8080. 
+Use the handy page located at localhost:8080.
 
 
 #### Documentation for App UNDER CONSTRUCTION
 https://nodejs.org/en/
 
 http://mongoosejs.com/
-
-https://httpie.org/doc
 
 https://www.npmjs.com/package/bcrypt
 

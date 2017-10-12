@@ -1,6 +1,6 @@
-import './style/main.scss';
+// import './style/main.scss';
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 import App from './component/app';
 import {Provider} from 'react-redux';
 import appCreateStore from './lib/app-create-store';
@@ -12,9 +12,9 @@ class AppContainer extends React.Component {
     return(
       <Provider store={store}>
         <App />
-      <Provider />
-    )
+      </Provider>
+    );
   }
 }
 
-ReactDom.render(<AppContainer /> , document.getElementById('root'));
+ReactDOM.render(<AppContainer /> , document.getElementById('root'));

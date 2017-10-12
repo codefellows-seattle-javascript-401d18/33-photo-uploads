@@ -9,6 +9,7 @@ import DashboardContainer from '../dashboard-container';
 import SettingsContainer from '../settings-container';
 
 class App extends React.Component {
+  
   render() {
     return (
       <div className="application">
