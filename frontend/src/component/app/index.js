@@ -23,6 +23,11 @@ class App extends React.Component {
         <BrowserRouter>
           <div>
             <Navbar />
+            {utils.renderIf(!this.props.auth,
+              <div>
+                <h2>This will be a hero advertisement</h2>
+              </div>
+            )} 
             <Route path="/settings" component={SettingsContainer}/>
             <Route path="/welcome/:auth" component={LandingContainer}/>
             <Route exact path="/dashboard" component={DashboardContainer}/>
@@ -35,6 +40,7 @@ class App extends React.Component {
 
 let mapStateToProps = state => ({
   profile: state.profile,
+  auth: state.auth,
 });
 
 let mapDispatchToProps = dispatch => ({
