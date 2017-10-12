@@ -83,7 +83,7 @@ class AuthForm extends React.Component {
           placeholder="password"
           value={this.state.password}
           onChange={this.handleChange}/><br/>
-        <Button bsStyle="primary">{this.props.auth}</Button>
+        <Button bsStyle="primary" type='submit'>{this.props.auth}</Button>
       </form>
     );
   }
