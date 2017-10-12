@@ -1,37 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as utils from '../../lib/utils';
+import PhotoForm from '../photo-form';
+import PhotoItem from '../photo-item';
+import {photosFetchRequest, photoCreateRequest} from '../../action/photo-actions';
 
 class DashboardContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      photos: '',
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
   componentWillMount() {
-    this.props.auth ? undefined : this.props.history.replace('/');
-  }
-
-  handleChange(e) {
-    let {type, name} = e.target;
-    if(name === 'photo') {
-      let {files} = e.target;
-      let photo = files[0];
-      this.setState({photo});
-
-      utils.photoToDataUrl(photo)
-        .then(photos => this.setState({photos}))
-        .catch(console.error);
-    }
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.onComplete(this.state);
+    if(!this.props.photos.length) this.photos.photosFetch();
   }
 
   render() {
@@ -39,27 +15,24 @@ class DashboardContainer extends React.Component {
       <div className='dashboard-container'>
         <h2>Hello from the Dashboard!</h2>
         <h3>Upload an image to add to the page.</h3>
-        <form
-          className="photo-form"
-          onSubmit={this.handleSubmit}>
+        <PhotoForm
+          buttonText="create"
+          onSubmit={this.props.photoCreate}/>
 
-          <input
-            type="file"
-            name="photo"
-            onChange={this.handleChange}/>
-
-          <button type="submit">Submit</button>
-        </form>
-        <img src={this.state.photos} style={{'width': '25%'}}/>
+        {this.props.photos.map(photo => <PhotoItem key={photo._id} photo={photo}/>)}
       </div>
     );
   }
 }
 
 let mapStateToProps = state => ({
-  auth: state.auth,
+  profile: state.profile,
+  photos: state.photos,
 });
 
-let mapDispatchToProps = dispatch => ({});
+let mapDispatchToProps = dispatch => ({
+  photosFetch: () => dispatch(photosFetchRequest()),
+  photoCreate: (photo) => dispatch(photoCreateRequest()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
