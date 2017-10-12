@@ -1,5 +1,6 @@
 import React from 'react';
 import * as utils from '../../lib/utils';
+import './_profileForm.scss';
 
 class ProfileForm extends React.Component {
   constructor(props) {
@@ -33,26 +34,28 @@ class ProfileForm extends React.Component {
 
   render() {
     return (
-      <form 
-        className="profile-form"
-        onSubmit={this.handleSubmit}>
+      <div className='form'>
+        <form 
+          className="form"
+          onSubmit={this.handleSubmit}>
 
-        <img src={this.state.preview} style={{'width': '25%'}}/><br/>
-        <input 
-          type="file"
-          name="avatar"
-          onChange={this.handleChange}/><br/>
+          <img src={this.state.preview} style={{'width': '25%'}}/><br/>
+          <input 
+            type="file"
+            name="avatar"
+            onChange={this.handleChange}/><br/>
 
-        <textarea 
-          name="bio" 
-          cols="30" 
-          rows="5"
-          value={this.state.bio}
-          onChange={this.handleChange}>
-        </textarea><br/>
+          <textarea 
+            name="bio" 
+            cols="30" 
+            rows="5"
+            value={this.state.bio}
+            onChange={this.handleChange}>
+          </textarea><br/>
 
-        <button type="submit">{this.props.buttonText}</button>
-      </form>
+          <button type="submit">{this.props.buttonText}</button>
+        </form>
+      </div>
     );
   }
 }
