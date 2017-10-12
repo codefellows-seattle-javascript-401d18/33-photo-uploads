@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as utils from '../../lib/utils';
 import ProfileForm from '../profile-form';
+import ProfileItem from '../profile-item';
 import {Button} from 'react-bootstrap';
 import {profileFetchRequest, profileCreateRequest, profileUpdateRequest} from '../../action/profile-actions';
 
@@ -11,18 +12,22 @@ class SettingsContainer extends React.Component {
     super(props);
     this.state ={
       editProfile: false,
+      username: '',
+      bio: '',
     };
     this.handleToggle = this.handleToggle.bind(this);
   }
 
 
   componentWillMount() {
-    this.props.profileFetch();
+    if(!this.props.profile) this.props.profileFetch()
+      .then(() => console.log('swh', this.props));
+    console.log(this.props, '******');
   }
 
+  
   handleToggle(){
     this.setState({editProfile: !this.state.editProfile});
-
   }
 
   render() {
@@ -36,12 +41,9 @@ class SettingsContainer extends React.Component {
               onComplete={this.props.profileCreate}/>
           </div>
         )}
+
         {utils.renderIf(this.props.auth && this.props.profile, 
-          <div>
-            <h3>{this.props.profile.username}</h3>
-            <h3>{this.props.profile.bio}</h3>
-            <Button bsStyle="primary" onClick={this.handleToggle}>Edit Profile</Button>
-          </div>
+          <ProfileItem />
         )}
         {utils.renderIf(this.state.editProfile,
           <div>

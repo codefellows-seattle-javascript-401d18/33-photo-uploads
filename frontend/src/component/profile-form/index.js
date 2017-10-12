@@ -37,11 +37,11 @@ class ProfileForm extends React.Component {
         className="profile-form"
         onSubmit={this.handleSubmit}>
 
-        <img src={this.state.preview} style={{'width': '25%'}}/>
+        <img src={this.state.preview} style={{'width': '25%'}}/><br/>
         <input 
           type="file"
           name="avatar"
-          onChange={this.handleChange}/>
+          onChange={this.handleChange}/><br/>
 
         <textarea 
           name="bio" 
@@ -49,7 +49,7 @@ class ProfileForm extends React.Component {
           rows="5"
           value={this.state.bio}
           onChange={this.handleChange}>
-        </textarea>
+        </textarea><br/>
 
         <button type="submit">{this.props.buttonText}</button>
       </form>
