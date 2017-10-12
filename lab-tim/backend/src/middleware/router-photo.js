@@ -1,7 +1,7 @@
-import {Router} from 'express'
-import {bearerAuth} from './parser-auth.js'
-import parserBody from './parser-body.js'
-import Photo from '../model/photo.js'
+import {Router} from 'express';
+import {bearerAuth} from './parser-auth.js';
+import parserBody from './parser-body.js';
+import Photo from '../model/photo.js';
 
 export default new Router()
 .post('/photos', bearerAuth, parserBody, (req, res, next) => {
@@ -15,7 +15,7 @@ export default new Router()
   .catch(next)
 })
 .get('/photos/me', bearerAuth, (req, res, next) => {
-  Photo.fetch(req, {username: req.user.usrename})
+  Photo.fetch(req, {username: req.user.username})
   .then(res.page)
   .catch(next)
 })
