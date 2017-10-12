@@ -12,10 +12,10 @@ import DashboardContainer from '../dashboard-container';
 class App extends React.Component {
 
 
-  componentDidMount() {
-    let token = utils.cookieFetch('X-Sluggram-Token');
-    if(token) this.props.tokenSet(token);
-  }
+  // componentDidMount() {
+  //   let token = utils.cookieFetch('X-Sluggram-Token');
+  //   if(token) this.props.tokenSet(token);
+  // }
 
   render() {
     return (

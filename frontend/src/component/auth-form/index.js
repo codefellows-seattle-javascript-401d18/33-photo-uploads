@@ -1,5 +1,6 @@
 import React from 'react';
 import * as utils from '../../lib/utils';
+import {Button} from 'react-bootstrap';
 
 class AuthForm extends React.Component {
   constructor(props) {
@@ -57,7 +58,7 @@ class AuthForm extends React.Component {
           name="username"
           placeholder="username"
           value={this.state.username}
-          onChange={this.handleChange}/>
+          onChange={this.handleChange}/><br/>
 
         {utils.renderIf(this.state.emailError,
           <span className="tooltip">{this.state.emailError}</span>
@@ -81,9 +82,8 @@ class AuthForm extends React.Component {
           name="password"
           placeholder="password"
           value={this.state.password}
-          onChange={this.handleChange}/>
-
-        <button type="submit">{this.props.auth}</button>
+          onChange={this.handleChange}/><br/>
+        <Button bsStyle="primary">{this.props.auth}</Button>
       </form>
     );
   }

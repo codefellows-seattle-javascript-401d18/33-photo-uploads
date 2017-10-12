@@ -1,6 +1,7 @@
 import React from 'react';
 import * as utils from '../../lib/utils';
 import './_photoForm.scss';
+import {FormControl, FormGroup, ControlLabel} from 'react-bootstrap';
 
 class PhotoForm extends React.Component {
   constructor(props){
@@ -40,18 +41,21 @@ class PhotoForm extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='form'>
         <h2>Choose a photo to upload</h2>
-        <form 
+        <br/>
+        <form
           className="photoForm"
           onSubmit={this.handleSubmit}>
 
           <img src={this.state.preview} style={{'width': '25%'}}/>
+          
           <input 
             type="file"
             name="photo"
             onChange={this.handleChange}/>
           <h2>Write a description for your photo</h2>
+
           <textarea 
             name="description" 
             cols="30" 
