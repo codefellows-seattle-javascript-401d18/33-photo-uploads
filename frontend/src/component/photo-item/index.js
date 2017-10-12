@@ -1,7 +1,8 @@
 import React from 'react';
+import './_photo-item.scss';
 import {connect} from 'react-redux';
 import * as utils from '../../lib/utils.js';
-import {Button} from 'react-bootstrap';
+import {Button, Grid, Col, Row} from 'react-bootstrap';
 import PhotoForm from '../photo-form';
 import {photoDeleteRequest, photoUpdateRequest} from '../../action/photo-actions.js';
 
@@ -30,14 +31,17 @@ class PhotoItem extends React.Component {
   
   render() {
     return (
+   
       <div>
         {utils.renderIf(!this.state.edit ,
+
           <div>
             <img src={this.props.photo.url} />
             <p> {this.props.photo.description} </p>
-            <Button onClick={this.handleDelete}>X</Button>
-            <Button onClick={() =>this.setState({edit: true})}>Edit</Button>
+            <Button bsStyle="danger" onClick={this.handleDelete}>X</Button>
+            <Button bsStyle="primary" onClick={() =>this.setState({edit: true})}>Edit</Button>
           </div>
+
         )}
 
         {utils.renderIf(this.state.edit,
@@ -49,7 +53,8 @@ class PhotoItem extends React.Component {
             />
           </div>
         )}
-      </div>
+      </div> 
+
     );
   }
 }

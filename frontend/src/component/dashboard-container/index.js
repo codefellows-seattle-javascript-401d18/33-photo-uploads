@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Grid, Row, Col} from 'react-bootstrap';
 import * as utils from '../../lib/utils';
 import PhotoForm from '../photo-form';
 import PhotoItem from '../photo-item';
@@ -17,8 +18,6 @@ class DashboardContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props.photos,'****photo');
-    console.log(this.props.photos, '%%%%%%%%%%%%%%%%');
     return (
       <div>
         <h4>I are Dashboard</h4>
@@ -29,11 +28,17 @@ class DashboardContainer extends React.Component {
               .catch(console.error);
           }}
         />
-        {utils.renderIf(this.props.photos,
-          this.props.photos.map(photo =>
-            <PhotoItem key={photo._id} photo={photo}
-            />
-          ))}
+        
+        <Row>
+          {utils.renderIf(this.props.photos,
+            this.props.photos.map(photo =>
+              <Col sm={6} md={3}>{
+                <PhotoItem key={photo._id} photo={photo}
+                />
+              }<br/></Col>
+            ))}
+        </Row>
+        
       </div>
     );
   }
