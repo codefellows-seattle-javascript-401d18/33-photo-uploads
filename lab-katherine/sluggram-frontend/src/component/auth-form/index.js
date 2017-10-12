@@ -35,7 +35,7 @@ class AuthForm extends React.Component {
       email: this.state.email,
     })
     // .then(() => this.setState({username: '', email: '', password: ''})) // No longer necessary given the redirect to a different view
-      .then(() => this.props.redirect('/dashboard'))
+      .then(() => this.props.redirect('/'))
       .catch(error => {
         console.error(error);
         this.setState({error});

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {tokenDelete} from '../../action/auth-actions';
+import {tokenDeleteRequest} from '../../action/auth-actions';
 
 class Navbar extends React.Component {
   render() {
@@ -20,8 +20,8 @@ class Navbar extends React.Component {
             {this.props.auth ?
               <div>
                 <li onClick={this.props.tokenDelete}><Link to="/">Logout</Link></li>
-                <li><Link to="/dashboard">Dashboard</Link></li>
                 <li><Link to="/settings">Settings</Link></li>
+                <li><Link to="/">Photos</Link></li>
               </div>
               :
               <div>
@@ -42,7 +42,7 @@ let mapStateToProps = state => ({
 });
 
 let mapDispatchToProps = dispatch => ({
-  tokenDelete: () => dispatch(tokenDelete()),
+  tokenDelete: () => dispatch(tokenDeleteRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
