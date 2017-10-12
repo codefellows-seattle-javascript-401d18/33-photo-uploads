@@ -58,7 +58,7 @@ export const photoUpdateRequest = (photo) => (dispatch, getState) => {
   return superagent.put(`${__API_URL__}/photos/${photo._id}`)
     .set('Authorization', `Bearer ${auth}`)
     .field('description', photo.description)
-    .attach('photo', photo.photo)
+    // .attach('photo', photo.photo)
     .then(res => {
       dispatch(photoUpdate(res.body));
       return res;

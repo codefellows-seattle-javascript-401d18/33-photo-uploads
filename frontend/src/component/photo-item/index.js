@@ -2,7 +2,7 @@ import React from 'react';
 import './_photo-item.scss';
 import {connect} from 'react-redux';
 import * as utils from '../../lib/utils.js';
-import {Button, Grid, Col, Row} from 'react-bootstrap';
+import {Button, Grid, Col, Row, Image} from 'react-bootstrap';
 import PhotoForm from '../photo-form';
 import {photoDeleteRequest, photoUpdateRequest} from '../../action/photo-actions.js';
 
@@ -36,7 +36,7 @@ class PhotoItem extends React.Component {
         {utils.renderIf(!this.state.edit ,
 
           <div>
-            <img src={this.props.photo.url} />
+            <Image className='uploadedImages' src={this.props.photo.url} responsive />
             <p> {this.props.photo.description} </p>
             <Button bsStyle="danger" onClick={this.handleDelete}>X</Button>
             <Button bsStyle="primary" onClick={() =>this.setState({edit: true})}>Edit</Button>
@@ -47,6 +47,7 @@ class PhotoItem extends React.Component {
         {utils.renderIf(this.state.edit,
           <div>
             <PhotoForm
+              hideUploadForm={'hideUploadForm'}
               photo={this.props.photo}
               buttonText='update'
               onComplete={this.handleUpdate}
