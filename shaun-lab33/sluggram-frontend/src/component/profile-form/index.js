@@ -5,7 +5,7 @@ class ProfileForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = props.profile ?
-        {...props.profile, preview: ''} :
+        { ...props.profile, preview: ''} :
         {bio: '', preview: '', avatar: null}
 
         this.handleChange = this.handleChange.bind(this)
@@ -21,7 +21,7 @@ handleChange(e) {
         this.setState({avatar})
 
         utils.photoToDataUrl(avatar)
-        .then(preview => this.setState(preview))
+        .then(preview => this.setState({preview}))
         .catch(console.error)
     }
 
@@ -38,7 +38,7 @@ render() {
             className="profile-form"
             onSubmit={this.handleSubmit}>
 
-        <img arc={this.state.preview}/>
+        <img src={this.state.preview}/>
         <input
             type="file"
             name="avatar"
