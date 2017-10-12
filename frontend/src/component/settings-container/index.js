@@ -41,6 +41,10 @@ class SettingsContainer extends React.Component {
               onComplete={this.props.profileCreate}/>
           </div>
         )}
+
+        {utils.renderIf(this.props.auth && this.props.profile, 
+          <ProfileItem />
+        )}
       </div>
     );
   }
