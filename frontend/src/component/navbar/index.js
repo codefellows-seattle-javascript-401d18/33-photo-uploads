@@ -1,4 +1,5 @@
 import React from 'react';
+import './_navbar.scss';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {tokenDelete} from '../../action/auth-actions';

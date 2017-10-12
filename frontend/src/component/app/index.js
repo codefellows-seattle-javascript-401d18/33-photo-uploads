@@ -1,4 +1,5 @@
 import React from 'react';
+import './_app.scss';
 import Navbar from '../navbar';
 import {connect} from 'react-redux';
 import * as utils from '../../lib/utils';
@@ -9,10 +10,7 @@ import SettingsContainer from '../settings-container';
 import DashboardContainer from '../dashboard-container';
 
 class App extends React.Component {
-  // componentDidMount() {
-  //   let token = utils.cookieFetch('X-Sluggram-token')
-  //   if(token) this.props.tokenSet(token)
-  // }
+
 
   render() {
     return (

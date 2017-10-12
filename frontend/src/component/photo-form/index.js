@@ -1,5 +1,6 @@
 import React from 'react';
 import * as utils from '../../lib/utils';
+import './_photoForm.scss';
 
 class PhotoForm extends React.Component {
   constructor(props){
