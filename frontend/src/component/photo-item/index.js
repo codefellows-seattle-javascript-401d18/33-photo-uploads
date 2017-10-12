@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as utils from '../../lib/utils.js';
 import {Button} from 'react-bootstrap';
+import PhotoForm from '../photo-form';
 import {photoDeleteRequest, photoUpdateRequest} from '../../action/photo-actions.js';
 
 class PhotoItem extends React.Component {
@@ -10,8 +11,23 @@ class PhotoItem extends React.Component {
     this.state = {
       edit: false,
     };
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
+  handleDelete() {
+    return this.props.deletePhoto(this.props.photo)
+      .catch(console.error);
+  }
+
+  handleUpdate(photo) {
+    return this.props.updatePhoto(photo)
+      .then(() => {
+        this.setState({edit: false});
+      })
+      .catch(console.error);
+  }
+  
   render() {
     return (
       <div>
@@ -19,8 +35,18 @@ class PhotoItem extends React.Component {
           <div>
             <img src={this.props.photo.url} />
             <p> {this.props.photo.description} </p>
-            <Button onClick={() =>this.handleDelete}>X</Button>
+            <Button onClick={this.handleDelete}>X</Button>
             <Button onClick={() =>this.setState({edit: true})}>Edit</Button>
+          </div>
+        )}
+
+        {utils.renderIf(this.state.edit,
+          <div>
+            <PhotoForm
+              photo={this.props.photo}
+              buttonText='update'
+              onComplete={this.handleUpdate}
+            />
           </div>
         )}
       </div>
