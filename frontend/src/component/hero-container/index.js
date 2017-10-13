@@ -2,6 +2,8 @@ import React from 'react';
 import './_heroContainer.scss';
 import {Button, Image} from 'react-bootstrap';
 import assetPicture from '../../assets/mountains.jpg';
+import scrollToComponent from 'react-scroll-to-component';
+
 
 class Hero extends React.Component {
   constructor(props){
@@ -11,11 +13,19 @@ class Hero extends React.Component {
     };
   }
 
+  componentDidMount() {
+    // const elem = ReactDOM.findDOMNode(this.refs.hello);
+
+    // if (elem) {
+    //   elem.scrollIntoView(false);
+    // }
+  }
+ 
   
   render() {
     return (
       <section>
-        <div className='hero'>
+        <div ref='hello' className='hero'>
           <Image className='uploadedImages' src={assetPicture} responsive />
           <div className="bar"></div>
         </div>
