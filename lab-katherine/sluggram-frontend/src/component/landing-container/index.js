@@ -15,7 +15,7 @@ class LandingContainer extends React.Component {
     let redirect = path => this.props.history.replace(path);
 
     return (
-      <div>
+      <div className="start">
         <Splash />
         <AuthForm
           auth={params.auth}
