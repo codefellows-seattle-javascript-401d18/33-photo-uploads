@@ -6,6 +6,7 @@ import * as utils from '../../lib/utils';
 import PhotoForm from '../photo-form';
 import PhotoItem from '../photo-item';
 import {photosFetchRequest, photoCreateRequest} from '../../action/photo-actions.js';
+import {profileFetchRequest} from '../../action/profile-actions.js';
 
 class DashboardContainer extends React.Component {
   constructor(props){
@@ -20,6 +21,7 @@ class DashboardContainer extends React.Component {
   componentDidMount(){
     this.props.photoFetch()
       .then(() => console.log(this.props, '***Props after didMountFetch'));
+    // this.props.profileFetch();
   }
 
   
@@ -92,6 +94,7 @@ let mapStateToProps = state => ({
 let mapDispatchToProps = dispatch => ({
   photoCreate: (photo) => dispatch(photoCreateRequest(photo)),
   photoFetch: () => dispatch(photosFetchRequest()),
+  profileFetch: () => dispatch(profileFetchRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
