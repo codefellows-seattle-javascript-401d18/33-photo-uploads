@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Grid, Row, Col, Jumbotron, Button} from 'react-bootstrap';
+import {Grid, Row, Col, Jumbotron, Button, Modal} from 'react-bootstrap';
 import * as utils from '../../lib/utils';
 import PhotoForm from '../photo-form';
 import PhotoItem from '../photo-item';
@@ -11,8 +11,10 @@ class DashboardContainer extends React.Component {
     super(props);
     this.state = {
       start: false,
+      showModal: false,
     };
     this.toggleFormStart = this.toggleFormStart.bind(this);
+    this.close = this.close.bind(this);
   }
   componentDidMount(){
     this.props.photoFetch()
@@ -25,7 +27,11 @@ class DashboardContainer extends React.Component {
   }
 
   toggleFormStart(){
-    this.setState({start: !this.state.start});
+    this.setState({showModal: !this.state.showModal});
+  }
+
+  close() {
+    this.setState({ showModal: !this.state.showModal });
   }
 
   render() {
@@ -37,14 +43,28 @@ class DashboardContainer extends React.Component {
           <p><Button bsStyle="primary" onClick={this.toggleFormStart}>Upload a Photo</Button></p>
         </Jumbotron>
 
-        {utils.renderIf(this.state.start, 
-          <PhotoForm
-            buttonText='post'
-            onComplete={(photo) =>{
-              return this.props.photoCreate(photo)
-                .catch(console.error);
-            }}
-          />
+        {utils.renderIf(this.state.showModal, 
+          <div className="static-modal">
+            <Modal show={this.state.showModal} >
+              <Modal.Header>
+                <Modal.Title>Upload a Photo</Modal.Title>
+              </Modal.Header>
+  
+              <Modal.Body>
+                <PhotoForm
+                  buttonText='post'
+                  onComplete={(photo) =>{
+                    return this.props.photoCreate(photo)
+                      .catch(console.error);
+                  }}
+                />
+              </Modal.Body> 
+              <Modal.Footer>
+                <Button onClick={this.close}>Close</Button>
+              </Modal.Footer> 
+            </Modal>
+          </div>
+          
         )}
         
         <Row>

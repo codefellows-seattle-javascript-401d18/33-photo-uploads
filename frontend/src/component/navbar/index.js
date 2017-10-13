@@ -2,6 +2,7 @@ import React from 'react';
 import './_navbar.scss';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {Button} from 'react-bootstrap';
 import {tokenDelete} from '../../action/auth-actions';
 import { AccessAlarm, ThreeDRotation } from 'material-ui-icons';
 
@@ -23,7 +24,7 @@ class Navbar extends React.Component {
             {this.props.auth ?
               <div>
                 <li onClick={this.props.tokenDelete}><Link to="/">Logout</Link></li> 
-                <li><Link to="/dashboard">Dashboard</Link></li> 
+                <li><Link to="/">Dashboard</Link></li> 
                 <li><Link to="/settings">Settings</Link></li> 
               </div>
               :
