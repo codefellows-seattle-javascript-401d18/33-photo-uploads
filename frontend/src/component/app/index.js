@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import * as utils from '../../lib/utils';
 import {tokenSet} from '../../action/auth-actions';
 import LandingContainer from '../landing-container';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import SettingsContainer from '../settings-container';
 import DashboardContainer from '../dashboard-container';
 import Hero from '../hero-container';
@@ -27,9 +27,9 @@ class App extends React.Component {
             {utils.renderIf(!this.props.auth,
               <Hero />
             )} 
-            <Route path="/settings" component={SettingsContainer}/>
             <Route path="/welcome/:auth" component={LandingContainer}/>
-            <Route exact path="/dashboard" component={DashboardContainer}/>
+            <Route exact path="/settings" component={() => this.props.auth ? <SettingsContainer/> : <Redirect to="/" />}/>
+            <Route exact path="/" component={() => this.props.auth ? <DashboardContainer/> : <Redirect to="/" />}/>
           </div>
         </BrowserRouter>
       </div>

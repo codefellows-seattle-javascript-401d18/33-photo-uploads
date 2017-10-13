@@ -1,6 +1,7 @@
 import React from 'react';
 import * as utils from '../../lib/utils';
 import './_photoForm.scss';
+import {Button} from 'react-bootstrap';
 import {FormControl, FormGroup, ControlLabel} from 'react-bootstrap';
 
 class PhotoForm extends React.Component {
@@ -64,7 +65,7 @@ class PhotoForm extends React.Component {
             onChange={this.handleChange}>
           </textarea>
 
-          <button type="submit">{this.props.buttonText}</button>
+          <Button bsStyle="primary" type="submit">{this.props.buttonText}</Button>
         </form>
       </div>
     );
