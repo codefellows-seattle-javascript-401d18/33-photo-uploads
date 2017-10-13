@@ -9,6 +9,8 @@ import DashboardContainer from '../dashboard-container';
 import Slug from '../slug';
 import Splash from '../splash';
 import {BrowserRouter, Route, Redirect} from 'react-router-dom';
+import img from './Transparent_Background.png';
+
 
 class App extends React.Component {
   componentDidMount() {
@@ -20,7 +22,7 @@ class App extends React.Component {
     return (
       <div className="application">
         <BrowserRouter>
-          <div>
+          <div className="app-thing">
             <Navbar />
             <Route path="/welcome/:auth" component={LandingContainer}/>
             <Route exact path="/settings" component={() => this.props.auth ? <SettingsContainer/> : <Redirect to="/" />}/>
