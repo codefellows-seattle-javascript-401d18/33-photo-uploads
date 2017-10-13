@@ -23,8 +23,7 @@ class ProfileItem extends React.Component {
       <div>
         <Jumbotron>
           <h3>{this.props.profile.username}</h3>
-          {/* <h3>{this.props.profile.bio}</h3> */}
-          <h3>{this.props.profile.bio}</h3>
+          <h4>{this.props.profile.bio}</h4>
           <Button bsStyle="primary" onClick={this.toggleFormStart}>Edit Profile</Button>
         </Jumbotron>
         <div>
