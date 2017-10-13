@@ -2,6 +2,7 @@ import React from 'react';
 import AuthForm from '../auth-form';
 import {connect} from 'react-redux';
 import * as utils from '../../lib/utils';
+import Splash from '../splash';
 import {signupRequest, loginRequest} from '../../action/auth-actions';
 
 class LandingContainer extends React.Component {
@@ -15,7 +16,7 @@ class LandingContainer extends React.Component {
 
     return (
       <div>
-        <h2>hello world from landing!</h2>
+        <Splash />
         <AuthForm
           auth={params.auth}
           redirect={redirect}

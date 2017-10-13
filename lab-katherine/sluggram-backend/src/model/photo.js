@@ -23,7 +23,7 @@ Photo.validateRequest = function(req){
   if(req.files.length > 1) {
     let err = createError(400, 'VALIDATION ERROR: must have one file');
     return util.removeMulterFiles(req.files)
-      .then(() => {throw err});
+      .then(() => {throw err})
   }
 
   let [file] = req.files;
@@ -31,7 +31,7 @@ Photo.validateRequest = function(req){
     if(file.fieldname !== 'photo'){
       let err = createError(400, 'VALIDATION ERROR: file must be on field photo');
       return util.removeMulterFiles(req.files)
-        .then(() => {throw err});
+        .then(() => {throw err})
     }
   }
 
@@ -64,45 +64,45 @@ Photo.fetchOne = function(req){
     .populate('profile comments')
     .then(photo => {
       if(!photo)
-        throw createError(404, 'NOT FOUND ERROR: photo not found');
-      return photo;
-    });
-};
+        throw createError(404, 'NOT FOUND ERROR: photo not found')
+      return photo
+    })
+}
 
 Photo.updatePhotoWithFile = function(req){
   return Photo.validateRequest(req)
     .then(file => {
       return util.s3UploadMulterFileAndClean(file)
         .then(s3Data => {
-          let update = {url: s3Data.Location};
-          if(req.body.description) update.description = req.body.description;
-          return Photo.findByIdAndUpdate(req.params.id, update, {new: true, runValidators: true});
-        });
-    });
-};
+          let update = {url: s3Data.Location}
+          if(req.body.description) update.description = req.body.description
+          return Photo.findByIdAndUpdate(req.params.id, update, {new: true, runValidators: true})
+        })
+    })
+}
 
 Photo.update = function(req){
   if(req.files && req.files[0])
     return Photo.updatePhotoWithFile(req)
       .then(photo => {
         return Photo.findById(photo._id)
-          .populate('comments profile');
-      });
-  let options = {new: true, runValidators: true};
-  let update = {description: req.body.description};
+          .populate('comments profile')
+      })
+  let options = {new: true, runValidators: true}
+  let update = {description: req.body.description}
   return Photo.findByIdAndUpdate(req.params.id, update, options)
     .then(photo => {
       return Photo.findById(photo._id)
-        .populate('comments profile');
-    });
-};
+        .populate('comments profile')
+    })
+}
 
 Photo.delete = function(req){
   return Photo.findOneAndRemove({_id: req.params.id, owner: req.user._id})
     .then(profile => {
       if(!profile)
-        throw createError(404, 'NOT FOUND ERROR: profile not found');
-    });
-};
+        throw createError(404, 'NOT FOUND ERROR: profile not found')
+    })
+}
 
-export default Photo;
+export default Photo

@@ -16,7 +16,7 @@ class ProfileForm extends React.Component {
     let {type, name} = e.target;
     if(name === 'bio') this.setState({bio: e.target.value});
     if(name === 'avatar') {
-      let {files} = e.target ;
+      let {files} = e.target;
       let avatar = files[0];
       this.setState({avatar});
 
