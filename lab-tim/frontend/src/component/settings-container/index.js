@@ -7,7 +7,7 @@ import {profileFetchRequest, profileCreateRequest} from '../../action/profile-ac
 class SettingsContainer extends React.Component {
   componentWillMount() {
     // if the user account has a profile, set it as this.props.profile
-    this.props.profileFetch();
+    if (!this.props.profile) this.props.profileFetch();
   }
 
   render() {

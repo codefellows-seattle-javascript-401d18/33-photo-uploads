@@ -10,6 +10,7 @@ import SettingsContainer from '../settings-container';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui//styles/baseThemes/darkBaseTheme';
+import AppBar from 'material-ui/AppBar';
 
 const muiTheme = getMuiTheme(darkBaseTheme);
 
@@ -23,6 +24,7 @@ class App extends React.Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="application">
+          <AppBar title="Photo App"/>
           <BrowserRouter>
             <div>
               <Navbar />
