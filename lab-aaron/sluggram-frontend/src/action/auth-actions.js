@@ -1,4 +1,5 @@
 import superagent from 'superagent';
+import * as utils from '../lib/utils';
 
 export const tokenSet = token => ({
   type: 'TOKEN_SET',
@@ -26,9 +27,14 @@ export const signupRequest = user => dispatch => {
 export const loginRequest = user => dispatch => {
   return superagent.get(`${__API_URL__}/login`)
     .withCredentials()
-    .auth(user.name, user.password)
+    .auth(user.username, user.password)
     .then(res => {
       dispatch(tokenSet(res.text));
       return res;
     });
+};
+
+export const tokenDeleteRequest = () => dispatch => {
+  utils.cookieDelete('X-Sluggram-Token');
+  dispatch(tokenDelete());
 };

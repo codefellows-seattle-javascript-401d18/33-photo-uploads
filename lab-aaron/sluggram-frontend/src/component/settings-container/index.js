@@ -2,11 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as utils from '../../lib/utils';
 import ProfileForm from '../profile-form';
-import {profileFetchRequest, profileCreateRequest} from '../../action/profile-acions';
+import {profileFetchRequest, profileCreateRequest} from '../../action/profile-actions';
 
 class SettingsContainer extends React.Component {
   componentWillMount() {
-    this.props.profileFetch();
+    if(!this.props.profile) this.props.profileFetch();
   }
 
   render() {
@@ -17,8 +17,11 @@ class SettingsContainer extends React.Component {
             <h2>Create a Profile?</h2>
             <ProfileForm
               buttonText="create"
-              onComplete={this.props.auth && !this.props.profileCreate}/>
+              onComplete={this.props.profileCreate}/>
           </div>
+        )}
+
+        {utils.renderIf(this.props.auth && this.props.profile,
         )}
       </div>
     );

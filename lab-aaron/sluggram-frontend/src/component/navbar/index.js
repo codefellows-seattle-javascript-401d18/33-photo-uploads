@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {tokenDelete} from '../../action/auth-actions';
 
 
@@ -21,8 +21,7 @@ class Navbar extends React.Component {
             {this.props.auth ?
               <div>
                 <li onClick={this.props.tokenDelete}><Link to="/">Logout</Link></li>
-                <li><Link to="/dashboard">Dashboard</Link></li>
-                <li><Link to="/welcome/login">Login</Link></li>
+                <li><Link to="/settings">Settings</Link></li>
               </div>
               :
               <div>
