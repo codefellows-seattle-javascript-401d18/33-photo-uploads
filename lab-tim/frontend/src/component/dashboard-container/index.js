@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import * as utils from '../../lib/utils';
 import PhotoForm from '../photo-form';
 import PhotoItem from '../photo-item';
-import {photosFetchRequest, photoCreateRequest} from '../../action/photo-actions';
+import {profileFetchRequest} from '../../action/profile-actions';
+import {photoCreateRequest, photosFetchRequest} from '../../action/photo-actions';
 
 class DashboardContainer extends React.Component {
   componentWillMount() {
-    console.log('__DASHBOARD_PROPS__', this.props);
-    //console.log('_DASHBOARD_DISPATCH__', photo);
     if(!this.props.photos.length) this.props.photosFetch();
+    if (!this.props.profile) this.props.profileFetch();
   }
 
   render() {
@@ -35,6 +35,7 @@ let mapStateToProps = state => ({
 let mapDispatchToProps = dispatch => ({
   photosFetch: () => dispatch(photosFetchRequest()),
   photoCreate: (photo) => dispatch(photoCreateRequest(photo)),
+  profileFetch: () => dispatch(profileFetchRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);

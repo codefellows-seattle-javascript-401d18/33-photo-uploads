@@ -28,7 +28,6 @@ class PhotoForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('__PHOTOFORM_PROPS__', this.props);
     this.props.onComplete(this.state)
       .then(() => this.setState({description: '', preview: '', photo: null}))
       .then(() => this.props.toggle ? this.props.toggle() : undefined);

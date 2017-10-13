@@ -26,21 +26,18 @@ export const photosFetchRequest = photos => (dispatch, getState) => {
   return superagent.get(`${__API_URL__}/photos/me`)
     .set('Authorization', `Bearer ${auth}`)
     .then(res => {
-      console.log('photo fetch res.body', res.body);
       dispatch(photosFetch(res.body.data));
       return res;
     });
 };
 
 export const photoCreateRequest = photo => (dispatch, getState) => {
-  console.log('photo', photo);
   let {auth} = getState();
   return superagent.post(`${__API_URL__}/photos`)
     .set('Authorization', `Bearer ${auth}`)
     .field('description', photo.description)
     .attach('photo', photo.photo)
     .then(res => {
-      console.log('photo res', res);
       dispatch(photoCreate(res.body));
       return res;
     });
