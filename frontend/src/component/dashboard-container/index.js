@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import './_dashboard.scss';
 import {Grid, Row, Col, Jumbotron, Button, Modal} from 'react-bootstrap';
 import * as utils from '../../lib/utils';
 import PhotoForm from '../photo-form';
@@ -36,7 +37,7 @@ class DashboardContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='jumbo'>
         <Jumbotron>
           <h1>InstyGrammy</h1>
           <p>Share what you love</p>
