@@ -24,7 +24,6 @@ class ProfileForm extends React.Component {
         .then(preview => this.setState({preview}))
         .catch(console.error);
     }
-
   }
 
   handleSubmit(e) {

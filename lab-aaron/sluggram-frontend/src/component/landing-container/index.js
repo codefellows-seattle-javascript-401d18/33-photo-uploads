@@ -7,7 +7,6 @@ import {signupRequest, loginRequest} from '../../action/auth-actions';
 class LandingContainer extends React.Component {
   render() {
     let {params} = this.props.match;
-    console.log(this.props);
     let handleComplete = params.auth === 'login' ?
       this.props.login :
       this.props.signup;
