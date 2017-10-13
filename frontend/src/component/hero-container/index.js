@@ -2,6 +2,8 @@ import React from 'react';
 import './_heroContainer.scss';
 import {Button, Image} from 'react-bootstrap';
 import assetPicture from '../../assets/mountains.jpg';
+import scrollToComponent from 'react-scroll-to-component';
+
 
 class Hero extends React.Component {
   constructor(props){
@@ -11,6 +13,8 @@ class Hero extends React.Component {
     };
   }
 
+
+ 
   
   render() {
     return (
