@@ -17,7 +17,6 @@ export const profileUpdate = profile => ({
 
 export const profileFetchRequest = () => (dispatch, getState) => {
   let {auth} = getState();
-  console.log('scott was here');
   return superagent.get(`${__API_URL__}/profiles/me`)
     .set('Authorization', `Bearer ${auth}`)
     .then(res => {
