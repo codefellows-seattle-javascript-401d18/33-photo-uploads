@@ -7,6 +7,7 @@ class ProfileForm extends React.Component {
     this.state = props.profile ?
       {...props.profile, preview: ''} :
       {bio: '', preview: '', avatar: null};
+      
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
