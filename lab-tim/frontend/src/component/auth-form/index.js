@@ -1,5 +1,6 @@
 import React from 'react';
 import * as utils from '../../lib/utils';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class AuthForm extends React.Component {
   constructor(props) {
@@ -83,7 +84,7 @@ class AuthForm extends React.Component {
           value={this.state.password}
           onChange={this.handleChange}/>
 
-        <button type="submit">{this.props.auth}</button>
+        <RaisedButton label={this.props.auth} type="submit" primary={true} />
       </form>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import * as utils from '../../lib/utils';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class ProfileForm extends React.Component {
   constructor(props) {
@@ -51,7 +52,7 @@ class ProfileForm extends React.Component {
           onChange={this.handleChange}>
         </textarea>
 
-        <button type="submit">{this.props.buttonText}</button>
+        <RaisedButton label={this.props.buttonText} type="submit" primary={true} />
       </form>
     );
   }
