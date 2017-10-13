@@ -8,14 +8,15 @@ import LandingContainer from '../landing-container';
 import {BrowserRouter, Route} from 'react-router-dom';
 import SettingsContainer from '../settings-container';
 import DashboardContainer from '../dashboard-container';
+import Hero from '../hero-container';
 
 class App extends React.Component {
 
 
-  // componentDidMount() {
-  //   let token = utils.cookieFetch('X-Sluggram-Token');
-  //   if(token) this.props.tokenSet(token);
-  // }
+  componentDidMount() {
+    let token = utils.cookieFetch('X-Sluggram-Token');
+    if(token) this.props.tokenSet(token);
+  }
 
   render() {
     return (
@@ -24,9 +25,7 @@ class App extends React.Component {
           <div>
             <Navbar />
             {utils.renderIf(!this.props.auth,
-              <div>
-                <h2>This will be a hero advertisement</h2>
-              </div>
+              <Hero />
             )} 
             <Route path="/settings" component={SettingsContainer}/>
             <Route path="/welcome/:auth" component={LandingContainer}/>

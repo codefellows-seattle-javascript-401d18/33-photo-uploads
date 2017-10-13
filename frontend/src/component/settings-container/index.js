@@ -21,8 +21,8 @@ class SettingsContainer extends React.Component {
 
   componentWillMount() {
     if(!this.props.profile) this.props.profileFetch()
-      .then(() => console.log('swh', this.props));
-    console.log(this.props, '******');
+      .then(() => console.log('********componentWillMount******', this.props));
+
   }
 
   
