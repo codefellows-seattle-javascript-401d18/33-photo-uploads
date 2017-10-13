@@ -15,7 +15,7 @@ export default new Router()
   .catch(next)
 })
 .get('/photos/me', bearerAuth, (req, res, next) => {
-  Photo.fetch(req, {username: req.user.username})
+  Photo.fetch(req, {username: req.user.usrename})
   .then(res.page)
   .catch(next)
 })

@@ -5,7 +5,7 @@ import * as utils from '../../lib/utils';
 import {tokenSet} from '../../action/auth-actions';
 import LandingContainer from '../landing-container';
 import DashboardContainer from '../dashboard-container';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import SettingsContainer from '../settings-container';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';

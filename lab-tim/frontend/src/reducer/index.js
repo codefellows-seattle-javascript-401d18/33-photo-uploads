@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
 import auth from './auth';
 import profile from './profile';
-import photo from './photo';
+import photos from './photo';
 
 export default combineReducers({
   auth,
   profile,
-  photo,
+  photos,
 });

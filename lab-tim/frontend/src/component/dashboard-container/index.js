@@ -7,7 +7,9 @@ import {photosFetchRequest, photoCreateRequest} from '../../action/photo-actions
 
 class DashboardContainer extends React.Component {
   componentWillMount() {
-    if(!this.props.photos.length) this.photos.photosFetch();
+    console.log('__DASHBOARD_PROPS__', this.props);
+    //console.log('_DASHBOARD_DISPATCH__', photo);
+    if(!this.props.photos.length) this.props.photosFetch();
   }
 
   render() {
@@ -17,7 +19,7 @@ class DashboardContainer extends React.Component {
         <h3>Upload an image to add to the page.</h3>
         <PhotoForm
           buttonText="create"
-          onSubmit={this.props.photoCreate}/>
+          onComplete={this.props.photoCreate}/>
 
         {this.props.photos.map(photo => <PhotoItem key={photo._id} photo={photo}/>)}
       </div>
@@ -32,7 +34,7 @@ let mapStateToProps = state => ({
 
 let mapDispatchToProps = dispatch => ({
   photosFetch: () => dispatch(photosFetchRequest()),
-  photoCreate: (photo) => dispatch(photoCreateRequest()),
+  photoCreate: (photo) => dispatch(photoCreateRequest(photo)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
