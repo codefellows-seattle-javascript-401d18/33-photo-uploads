@@ -6,6 +6,8 @@ import {tokenSet} from '../../action/auth-actions';
 import LandingContainer from '../landing-container';
 import SettingsContainer from '../settings-container';
 import DashboardContainer from '../dashboard-container';
+import Slug from '../slug';
+import Splash from '../splash';
 import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 
 class App extends React.Component {
@@ -22,7 +24,7 @@ class App extends React.Component {
             <Navbar />
             <Route path="/welcome/:auth" component={LandingContainer}/>
             <Route exact path="/settings" component={() => this.props.auth ? <SettingsContainer/> : <Redirect to="/" />}/>
-            <Route exact path="/" component={() => this.props.auth ? <DashboardContainer/> : <Redirect to="/" />}/>
+            <Route exact path="/" component={() => this.props.auth ? <DashboardContainer/> : <Slug />}/>
           </div>
         </BrowserRouter>
       </div>

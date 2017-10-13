@@ -6,31 +6,31 @@ import {tokenDeleteRequest} from '../../action/auth-actions';
 class Navbar extends React.Component {
   render() {
     return (
-      <header>
+      <header className="container">
         {this.props.auth && this.props.profile ?
-          <div className="profile-header">
-            <h2>Welcome {this.props.profile.username}</h2>
-            <img src={this.props.profile.avatar} style={{"width": "15%", "border": "1px solid grey"}}/>
+          <div className="welcome-header">
+            {/* <h2 className="welcome">Sluggram</h2> */}
+            <img className="avatar" src={this.props.profile.avatar} />
           </div>
           :
           undefined
         }
-        <nav>
+        <div className="profile-header">
           <ul>
             {this.props.auth ?
               <div>
-                <li onClick={this.props.tokenDelete}><Link to="/">Logout</Link></li>
-                <li><Link to="/settings">Settings</Link></li>
-                <li><Link to="/">Photos</Link></li>
+                <li><Link className="link" to="/settings">**Settings**</Link></li>
+                <li><Link className="link" to="/">**Photos**</Link></li>
+                <li onClick={this.props.tokenDelete}><Link className="link" to="/">**Logout**</Link></li>
               </div>
               :
               <div>
-                <li><Link to="/welcome/signup">Signup</Link></li>
-                <li><Link to="/welcome/login">Login</Link></li>
+                <li><Link className="link" to="/welcome/signup">**Signup**</Link></li>
+                <li><Link className="link" to="/welcome/login">**Login**</Link></li>
               </div>
             }
           </ul>
-        </nav>
+        </div>
       </header >
     );
   }
